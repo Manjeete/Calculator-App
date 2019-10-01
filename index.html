@@ -31,20 +31,26 @@
 				}
 			</style>
 			<script>
+				var x = false;
 				//evaluate the input field expression 
 				function evl(){
                 	document.calc.result.value=eval(document.calc.result.value);
+                	x = true;
                 }
                
 				document.addEventListener('DOMContentLoaded', function() {
 					// selecting buttons
                 document.querySelectorAll('.change-value').forEach(function(button) {
                     button.onclick = function() {
+                    	if (x) {
+                    		document.calc.result.value = "";
+                    	}
                     	if (button.dataset.value =="c") {
                     		document.calc.result.value = "";
                     	}
                     	else{
                     		document.calc.result.value += button.dataset.value;
+                    		x = false;
                     	}
                     };
                 });
@@ -60,30 +66,24 @@
 					<input value="2" class="change-value" type="button" data-value="2">
 					<input value="3" class="change-value" type="button" data-value="3">
 					<input value="/" class="change-value" type="button" data-value="/">
-					<br>
-					<br>
+					<br><br>
 					<input value="4" class="change-value" type="button" data-value="4">
 					<input value="5" class="change-value" type="button" data-value="5">
 					<input value="6" class="change-value" type="button" data-value="6">
 					<input value="*" class="change-value" type="button" data-value="*">
-					<br>
-					<br>
+					<br><br>
 					<input value="7" class="change-value" type="button" data-value="7">
 					<input value="8" class="change-value" type="button" data-value="8">
 					<input value="9" class="change-value" type="button" data-value="9">
 					<input value="-" class="change-value" type="button" data-value="-">
-					<br>
-					<br>
+					<br><br>
 					<input value="0" class="change-value" type="button" data-value="0">
 					<input value="." class="change-value" type="button" data-value=".">
 					<input value="c" class="change-value" type="button" data-value="c">
 					<input value="+" class="change-value" type="button" data-value="+">
-					<br>
-					<br>
+					<br><br>
 					<input type="button" value="=" style="width:95%;height:50px;margin-left:7px;" onclick="evl();">
-
 				</form>
-			</div>
-			
-		</body>
-	</html>
+			</div>			
+	</body>
+</html>
