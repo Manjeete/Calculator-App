@@ -12,8 +12,8 @@
 					width:300px;
 					height:400px;
 					background-color:white;
-					border-top:40px groove red;
-					border-bottom:40px ridge red;
+					border-top:40px groove #03adfc;
+					border-bottom:40px ridge #03adfc;
 					margin:0 auto;
 					border-radius:40px;
 					box-shadow:0px 0px 5px #323232;
@@ -30,37 +30,57 @@
 					border-radius:30px;
 				}
 			</style>
+			<script>
+				//evaluate the input field expression 
+				function evl(){
+                	document.calc.result.value=eval(document.calc.result.value);
+                }
+               
+				document.addEventListener('DOMContentLoaded', function() {
+					// selecting buttons
+                document.querySelectorAll('.change-value').forEach(function(button) {
+                    button.onclick = function() {
+                    	if (button.dataset.value =="c") {
+                    		document.calc.result.value = "";
+                    	}
+                    	else{
+                    		document.calc.result.value += button.dataset.value;
+                    	}
+                    };
+                });
+            });
+			</script>
 		</head>
 		<body>
 			<div>
 				<form name="calc">
 					<input type="text" name="result">
 					<br><br>
-					<input type="button" value="1" onclick="document.calc.result.value+=1">
-					<input type="button" value="2" onclick="document.calc.result.value+=2">
-					<input type="button" value="3" onclick="document.calc.result.value+=3">
-					<input type="button" value="/" onclick="document.calc.result.value+='/'">
+					<input value="1" class="change-value" type="button"data-value="1">
+					<input value="2" class="change-value" type="button" data-value="2">
+					<input value="3" class="change-value" type="button" data-value="3">
+					<input value="/" class="change-value" type="button" data-value="/">
 					<br>
 					<br>
-					<input type="button" value="4" onclick="document.calc.result.value+=4">
-					<input type="button" value="5" onclick="document.calc.result.value+=5">
-					<input type="button" value="6" onclick="document.calc.result.value+=6">
-					<input type="button" value="*" onclick="document.calc.result.value+='*'">
+					<input value="4" class="change-value" type="button" data-value="4">
+					<input value="5" class="change-value" type="button" data-value="5">
+					<input value="6" class="change-value" type="button" data-value="6">
+					<input value="*" class="change-value" type="button" data-value="*">
 					<br>
 					<br>
-					<input type="button" value="7" onclick="document.calc.result.value+=7">
-					<input type="button" value="8" onclick="document.calc.result.value+=8">
-					<input type="button" value="9" onclick="document.calc.result.value+=9">
-					<input type="button" value="-" onclick="document.calc.result.value+='-'">
+					<input value="7" class="change-value" type="button" data-value="7">
+					<input value="8" class="change-value" type="button" data-value="8">
+					<input value="9" class="change-value" type="button" data-value="9">
+					<input value="-" class="change-value" type="button" data-value="-">
 					<br>
 					<br>
-					<input type="button" value="0" onclick="document.calc.result.value+=0">
-					<input type="button" value="." onclick="document.calc.result.value+='.'">
-					<input type="button" value="c" onclick="document.calc.result.value=''">
-					<input type="button" value="+" onclick="document.calc.result.value+='+'">
+					<input value="0" class="change-value" type="button" data-value="0">
+					<input value="." class="change-value" type="button" data-value=".">
+					<input value="c" class="change-value" type="button" data-value="c">
+					<input value="+" class="change-value" type="button" data-value="+">
 					<br>
 					<br>
-					<input type="button" value="=" style="width:95%;height:50px;margin-left:7px;" onclick="document.calc.result.value=eval(document.calc.result.value)">
+					<input type="button" value="=" style="width:95%;height:50px;margin-left:7px;" onclick="evl();">
 
 				</form>
 			</div>
