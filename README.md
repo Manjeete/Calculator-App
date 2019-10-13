@@ -1,2 +1,10 @@
-A simple calculator using Javascript
-https://manjeete.github.io/Calculator-App/
+# Calculator
+```
+Technology stack
+```
+- Javascript
+- HTML
+- CSS
+
+## Live Version
+[Click Here](https://manjeete.github.io/Calculator-App/)
